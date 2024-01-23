@@ -1,0 +1,53 @@
+<!-- FILEPATH: /C:/Users/gabri/OneDrive/Área de Trabalho/Primeiro_site/site_da_Julia/alunos/templates/cadastro.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro de Alunos</title>
+    <style>
+        /* CSS styles for the form */
+        form {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #E0E0E0; /* Light Gray */
+            color: #382d2d; /* Dark Gray */
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cadastro de Alunos</h1>
+    <form action="{% url 'cadastro' %}"  method = "POST"> {% csrf_token %}
+        <label for="username">Nome:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" required>
+
+        <input type="submit" value="Cadastrar">
+    </form>
+</body>
+</html>

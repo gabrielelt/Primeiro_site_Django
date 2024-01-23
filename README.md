@@ -1,1 +1,2 @@
-# Primeiro_site_Django
+# Primeiro_site
+Aprendendo a produzir um site usando o Django
