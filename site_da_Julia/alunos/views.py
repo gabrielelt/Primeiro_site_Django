@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 def cadastro(request):
     if request.method == "GET":
-        return render(request, 'cadastro.html')
+        return render(request, 'alunos/cadastro.html')
     else:
         nome_do_aluno = request.POST.get('username')
         email_do_aluno = request.POST.get('email')
@@ -25,7 +25,7 @@ def cadastro(request):
 
 def login(request):
     if request.method == "GET":
-        return render(request, 'login.html')
+        return render(request, 'alunos/login.html')
     else:
         username = request.POST.get('username')
         senha_do_aluno = request.POST.get('password')
