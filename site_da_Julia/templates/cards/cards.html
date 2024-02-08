@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Cards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/styles/style_cards.css' %}">
+</head>
+
+<body>
+    <h1>Choose an Option:</h1>
+
+    {% if cards %}
+    {% for card in cards %}
+    <div class="card">
+        <section class="card__image">
+            <img src="{{ card.foto_card.url }}" alt="Image"> 
+        </section>
+        
+        <section class="card__content">
+            <form action="{% url 'cards' %}" method="post"> {% csrf_token %}
+                <input type="hidden" name="nome_do_card" value="{{ card.nome_do_card }}">
+                <button type="submit" class="card__content__button" name="resposta" value="{{ card.alternativa_um }}">{{ card.alternativa_um }}</button>
+
+                <input type="hidden" name="nome_do_card" value="{{ card.nome_do_card }}">
+                <button type="submit" class="card__content__button" name="resposta" value="{{ card.alternativa_dois }}">{{ card.alternativa_dois }}</button>
+
+                <input type="hidden" name="nome_do_card" value="{{ card.nome_do_card }}">
+                <button type="submit" class="card__content__button" name="resposta" value="{{card.alternativa_tres}}"> {{ card.alternativa_tres }} </button>
+
+                <input type="hidden" name="nome_do_card" value="{{ card.nome_do_card }}">
+                <button type="submit" class="card__content__button" name="resposta" value="{{card.alternativa_quatro}}"> {{ card.alternativa_quatro }} </button>
+
+                <input type="hidden" name="nome_do_card" value="{{ card.nome_do_card }}">
+                <button type="submit" class="card__content__button" name="resposta" value="{{card.alternativa_cinco}}">{{ card.alternativa_cinco }} </button>
+            </form>        
+        </section>
+    </div>
+    {% endfor %}
+    {% else %}
+    {% endif %}
+</body>
+</html>
