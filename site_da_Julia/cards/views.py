@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from .models import Card
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def cards(request):
     if request.method == "GET":
         dados = Card.objects.order_by('-id').filter(publicada=True).all
