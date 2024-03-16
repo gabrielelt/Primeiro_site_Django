@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def cards(request):
+    usuario_logado = request.user
     if request.method == "GET":
         dados = Card.objects.order_by('-id').filter(publicada=True).all
         return render(request, 'cards/cards.html', {'cards': dados})
@@ -13,7 +14,11 @@ def cards(request):
         resposta = request.POST.get('resposta') 
 
         if resposta == card.resposta_correta:
-            return HttpResponse(' é a resposta correta!')
+            usuario_logado.cards_respondidos.add(card, through_defaults={'acertou': True})
+            usuario_logado.save()
+            return HttpResponse(usuario_logado.aluno_card.all())
         else:
-            return HttpResponse(' é a resposta errada!')
+            usuario_logado.cards_respondidos.add(card=card, through_defaults={'acertou': False})
+            usuario_logado.save()
+            return HttpResponse(usuario_logado.aluno_card.all())
     # Path: site_da_julia/cards/urls.py
