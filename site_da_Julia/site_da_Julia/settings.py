@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path, os
 from dotenv import load_dotenv
+from django.db import models
+
+
 
 load_dotenv()
 
@@ -89,6 +92,8 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
+
+AUTH_USER_MODEL = "alunos.Aluno_Profile"
 
 AUTH_PASSWORD_VALIDATORS = [
     {
