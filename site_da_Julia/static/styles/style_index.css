@@ -24,6 +24,10 @@ body
     flex-direction: row-reverse;
 }
 
+.pagina-inicial__primeiro-scrol__menu ul{
+    text-decoration: none;
+}
+
 .pagina-inicial__primeiro-scrol__conteudo
 {
     margin-top: 10%;
@@ -52,6 +56,3 @@ body
     align-items: center;
 }
 
-ul{
-    text-decoration: none;
-}
