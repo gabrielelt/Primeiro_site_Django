@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'alunos',
     'index',
     'cards.apps.CardsConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
